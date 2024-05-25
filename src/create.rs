@@ -1,4 +1,8 @@
-use crate::{commands::slash::ping, constants, infrastructure::services::guild};
+use crate::{
+    commands::slash::{config, ping},
+    constants,
+    infrastructure::services::guild,
+};
 pub async fn create(
     uri: String,
 ) -> poise::Framework<
@@ -8,7 +12,7 @@ pub async fn create(
     let guild_service = guild::GuildService::new(uri).await.unwrap();
     poise::Framework::builder()
         .options(poise::FrameworkOptions {
-            commands: vec![ping::ping()],
+            commands: vec![ping::ping(), config::set()],
             ..Default::default()
         })
         .setup(|ctx, _ready, framework| {
