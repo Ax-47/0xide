@@ -11,7 +11,7 @@ impl GuildService {
         let scylla_session: Session = scylladb::connect_scylladb(uri).await?;
         Ok(GuildService { scylla_session })
     }
-    pub async fn create_guild(&self, guild_id: i32) -> Result<QueryResult, QueryError> {
+    pub async fn create_guild(&self, guild_id: String) -> Result<QueryResult, QueryError> {
         let query_result = self
             .scylla_session
             .query("INSERT INTO oxide.guild (id) VALUES(?)", (guild_id,))
