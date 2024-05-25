@@ -1,4 +1,4 @@
-use crate::constants;
+use crate::{constants, events::on_ready};
 use poise::serenity_prelude as serenity;
 pub async fn event_handler(
     _ctx: &serenity::Context,
@@ -8,7 +8,7 @@ pub async fn event_handler(
 ) -> Result<(), constants::Error> {
     match event {
         serenity::FullEvent::Ready { data_about_bot, .. } => {
-            println!("Logged in as {}", data_about_bot.user.name);
+            on_ready::on_ready(data_about_bot.to_owned()).await;
         }
         _ => {}
     }

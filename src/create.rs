@@ -1,6 +1,7 @@
 use crate::{
     commands::slash::{config, ping},
     constants,
+    events::handle,
     infrastructure::services::guild,
 };
 pub async fn create(
@@ -13,6 +14,9 @@ pub async fn create(
     poise::Framework::builder()
         .options(poise::FrameworkOptions {
             commands: vec![ping::ping(), config::set()],
+            event_handler: |ctx, event, framework, data| {
+                Box::pin(handle::event_handler(ctx, event, framework, data))
+            },
             ..Default::default()
         })
         .setup(|ctx, _ready, framework| {
