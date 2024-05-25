@@ -1,8 +1,30 @@
 CREATE KEYSPACE IF NOT EXISTS oxide WITH replication = {'class': 'NetworkTopologyStrategy', 'replication_factor' : 1};
 USE oxide;
-CREATE TABLE IF NOT EXISTS guilds{
-id uuid,
-join_channel int,
-leave_channel int,
+CREATE TYPE embed (
+  title text,
+  description text,
+  colour bigint,
+  author text,  
+  thumbnail text,
+  image frozen<image>
+);
+
+CREATE TYPE image (
+  path text,
+  text list<frozen<text_point>>
+);
+
+CREATE TYPE text_point (
+  text text,
+  x smallint,
+  y smallint
+);
+
+CREATE TABLE guild (
+  id text,
+  join_channel text,
+  leave_channel text,
+  join_embed frozen<embed>,
+  leave_embed frozen<embed>
 PRIMARY KEY(id),
-}
+);
