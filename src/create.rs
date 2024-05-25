@@ -13,7 +13,7 @@ pub async fn create(
     let guild_service = guild::GuildService::new(uri).await.unwrap();
     poise::Framework::builder()
         .options(poise::FrameworkOptions {
-            commands: vec![ping::ping(), config::set()],
+            commands: vec![ping::ping(), config::config()],
             event_handler: |ctx, event, framework, data| {
                 Box::pin(handle::event_handler(ctx, event, framework, data))
             },

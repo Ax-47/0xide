@@ -1,5 +1,5 @@
 use crate::constants;
-use poise::serenity_prelude::{self as serenity, model::guild};
+use poise::serenity_prelude::model::guild;
 pub async fn guild_create(data: &constants::Data, guild: guild::Guild) {
     if data
         .guild_service

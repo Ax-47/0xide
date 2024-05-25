@@ -1,4 +1,4 @@
-# 0xide
+# 0xide Prodzhekt
 
 ## Dependencies
 

@@ -12,7 +12,14 @@ pub async fn set(
     channel: serenity::Channel,
 ) -> Result<(), Error> {
     let data = ctx.data();
-
+    let _ = data
+        .guild_service
+        .update_join_channel(
+            ctx.guild_id().unwrap_or_default().to_string(),
+            channel.id().to_string(),
+        )
+        .await
+        .expect("text");
     let response = format!("test config");
     ctx.say(response).await?;
     Ok(())
