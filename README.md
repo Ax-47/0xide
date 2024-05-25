@@ -6,8 +6,8 @@
 - ScyllaDB
 
 ## TODO
--[ ] Welcome/Leave
--[ ] User Report
--[ ] Log
--[ ] Moderation
--[ ] Automod
+- [ ] Welcome/Leave
+- [ ] User Report
+- [ ] Log
+- [ ] Moderation
+- [ ] Automod
